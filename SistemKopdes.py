@@ -2,16 +2,32 @@
 import random
 
 
-def totalPenjualan(?, ?):
+def totalPenjualan(namaBarang,penjualan):
     # kerjakan di sini
+    if penjualan == 0:
+        return 0
+    return namaBarang [penjualan - 1][1]+ totalPenjualan(namaBarang,penjualan - 1)
+        
 
 
-def penjualanTertinggi(?, ?):
-    # kerjakan di sini
+def penjualanTertinggi(data, n):
+    if n == 1:
+        return data[0]
+    
+    tertinggi_sebelumnya = penjualanTertinggi(data, n - 1)
+    
+    if data[n - 1][1] > tertinggi_sebelumnya[1]:
+        return data[n - 1]
+    else:
+        return tertinggi_sebelumnya
 
-
-def diAtasRataRata(?, ?):
-    # kerjakan di sini
+def diAtasRataRata(penjualan, rataRata):
+    
+    jumlah_di_atas = 0
+    for nilai in penjualan.values():
+        if nilai > rataRata:
+            jumlah_di_atas += 1
+    return jumlah_di_atas
 
 
 # Program Utama - Jangan dihapus/diedit yak
